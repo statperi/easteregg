@@ -24,8 +24,13 @@ var Model = () => {
         // scale: '0.05 0.05 0.05',
         scale: '5 5 5',
         rotation: '0 0 0',
-        position: '5 0 -5',
-        gestureConfig: 'minScale: 1; maxScale: 10',
+        // position: '5 0 -5',
+        position: {
+            x: 5,
+            y: 0,
+            z: -5
+        },
+        gestureConfig: 'minScale: 0.5; maxScale: 10',
         info: 'Easter Egg',
         text: null,
         ground: false,
@@ -55,7 +60,8 @@ function createEntityElement(config) {
     let element = document.createElement('a-entity');
     element.setAttribute('scale', config.scale);
     //element.setAttribute('rotation', config.rotation);
-    element.setAttribute('position', config.position);
+    // element.setAttribute('position', config.position);
+    element.object3D.position.x = config.position.x; element.object3D.position.y = config.position.y; element.object3D.position.z = config.position.z;
     element.setAttribute('gltf-model', config.url);
     element.setAttribute('info', config.info);
     element.setAttribute('animation-mixer', config.animation ? config.animation : '');
@@ -99,7 +105,7 @@ function createTextElement(config) {
         element.setAttribute('look-at', '[camera]');
     }
     else if (config.gestureConfig) {
-        element.setAttribute('gesture-handler', 'minScale: 1; maxScale: 10');
+        element.setAttribute('gesture-handler', 'minScale: 0.5; maxScale: 10');
         element.classList.add('clickable');
     }
     
