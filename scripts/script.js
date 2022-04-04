@@ -21,15 +21,15 @@ var Model = () => {
     return {
         code: 'easter egg',
         url: './assets/easter_egg_2019/scene.gltf',
+        rotation: '0 0 0',
         scale: '25 25 25',
         positionText: '5 0 -5',
-        rotation: '0 0 0',
         position: {
             x: 5,
             y: 0,
             z: -5
         },
-        gestureConfig: 'minScale: 25; maxScale: 100',
+        gestureConfig: 'minScale: 0.5; maxScale: 10',
         info: 'Easter Egg',
         text: null,
         ground: false,
@@ -44,7 +44,7 @@ function createEntity(model, autoscale) {
     scene.appendChild(entityEl);
 
     // test
-    $(entityEl).setAttribute('position', model.positionText);
+    $(entityEl)[0].setAttribute('position', model.positionText);
     console.log('position:', model.positionText);
 
     if (model.ground) {
