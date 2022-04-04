@@ -22,7 +22,7 @@ var Model = () => {
         code: 'easter egg',
         url: './assets/easter_egg_2019/scene.gltf',
         // scale: '0.05 0.05 0.05',
-        scale: '1 1 1',
+        scale: '10 10 10',
         rotation: '0 0 0',
         // position: '5 0 -5',
         position: {
