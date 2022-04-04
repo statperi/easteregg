@@ -21,16 +21,15 @@ var Model = () => {
     return {
         code: 'easter egg',
         url: './assets/easter_egg_2019/scene.gltf',
-        // scale: '0.05 0.05 0.05',
-        scale: '10 10 10',
+        scale: '25 25 25',
+        positionText: '5 0 -5',
         rotation: '0 0 0',
-        // position: '5 0 -5',
         position: {
             x: 5,
             y: 0,
             z: -5
         },
-        gestureConfig: 'minScale: 0.5; maxScale: 10',
+        gestureConfig: 'minScale: 25; maxScale: 100',
         info: 'Easter Egg',
         text: null,
         ground: false,
@@ -43,6 +42,10 @@ function createEntity(model, autoscale) {
 
     let entityEl = createEntityElement(model);
     scene.appendChild(entityEl);
+
+    // test
+    $(entityEl).setAttribute('position', model.positionText);
+    console.log('position:', model.positionText);
 
     if (model.ground) {
         let planeEl = createPlaneElement();
@@ -60,8 +63,17 @@ function createEntityElement(config) {
     let element = document.createElement('a-entity');
     element.setAttribute('scale', config.scale);
     //element.setAttribute('rotation', config.rotation);
-    // element.setAttribute('position', config.position);
-    element.object3D.position.x = config.position.x; element.object3D.position.y = config.position.y; element.object3D.position.z = config.position.z;
+
+    if (config.positionText) {
+        element.setAttribute('position', config.positionText);
+    }
+
+    if (config.position) {
+        element.object3D.position.x = config.position.x;
+        element.object3D.position.y = config.position.y;
+        element.object3D.position.z = config.position.z;
+    }
+
     element.setAttribute('gltf-model', config.url);
     element.setAttribute('info', config.info);
     element.setAttribute('animation-mixer', config.animation ? config.animation : '');
@@ -71,6 +83,7 @@ function createEntityElement(config) {
     if (config.lookAt == '[camera]') {
         element.setAttribute('look-at', '[camera]');
     }
+
     else if (config.gestureConfig) {
         element.setAttribute('gesture-handler', config.gestureConfig);
         element.classList.add('clickable');
