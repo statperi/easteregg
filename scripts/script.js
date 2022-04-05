@@ -7,7 +7,7 @@ window.onload = () => {
                 longitude: currentLocation.coords.longitude
             };
 
-            setCoordinates(data, 100); // set coordinates 100 meters away
+            setCoordinates(data, 40); // set coordinates 100 meters away
 
             let model = Model();
             model.location = data;
