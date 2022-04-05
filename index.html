@@ -23,9 +23,15 @@
     <a-scene vr-mode-ui="enabled: false"
              embedded
              gesture-detector
-             arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+             arjs='sourceType: webcam; 
+                    sourceWidth:1280; 
+                    sourceHeight:960; 
+                    displayWidth: 1280; 
+                    displayHeight: 960; 
+                    videoTexture: true;
+                    debugUIEnabled: false;'>
 
-        <a-camera gps-camera rotation-reader></a-camera>
+        <a-camera gps-camera="gpsTimeInterval: 0; gpsMinDistance: 20" rotation-reader></a-camera>
     </a-scene>
 </body>
 </html>
