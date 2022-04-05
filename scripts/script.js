@@ -7,7 +7,7 @@ window.onload = () => {
                 longitude: currentLocation.coords.longitude
             };
 
-            setCoordinates(data, 20); // set coordinates 100 meters away
+            setCoordinates(data, 100); // set coordinates 100 meters away
 
             let model = Model();
             model.location = data;
@@ -24,7 +24,7 @@ var Model = () => {
         code: 'easter egg',
         url: './assets/easter_egg_2019/scene.gltf',
         rotation: '0 0 0',
-        scale: '25 25 25',
+        scale: '50 50 50',
         position: '0 0 0',
         gestureConfig: 'minScale: 0.5; maxScale: 10',
         info: 'Easter Egg'
