@@ -2,12 +2,12 @@ window.onload = () => {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (currentLocation) {
-            //var data = {
-            //    latitude: currentLocation.coords.latitude,
-            //    longitude: currentLocation.coords.longitude
-            //};
+            var data = {
+                latitude: currentLocation.coords.latitude,
+                longitude: currentLocation.coords.longitude
+            };
 
-            var data = { latitude: 53.3014227, longitude: -6.1777447 };
+            setCoordinates(data, 100); // set coordinates 100 meters away
 
             let model = Model();
             model.location = data;
@@ -58,3 +58,14 @@ function createEntityElement(config) {
     return element;
 }
 
+
+function setCoordinates(data, offset) {
+    let R = 6378137;
+    let Pi = 3.14159265;
+
+    var dLat = offset / R;
+    var dLon = offset / (R * Math_cos(Pi * data.latitude / 180));
+
+    data.latitude = data.latitude + dLat * 180 / Pi;
+    data.longitude = data.longitude + dLon * 180 / Pi;
+}
