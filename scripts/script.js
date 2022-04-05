@@ -50,7 +50,7 @@ function createEntityElement(config) {
     element.setAttribute('success', 'false');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
-    else if (config.gestureConfig) {
+    if (config.gestureConfig) {
         element.setAttribute('gesture-handler', config.gestureConfig);
         element.classList.add('clickable');
     }
