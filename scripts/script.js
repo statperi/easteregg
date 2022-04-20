@@ -22,7 +22,7 @@ window.onload = () => {
 var Model = () => {
     return {
         code: 'easter egg',
-        url: './assets/easter_egg_2019/scene.gltf',
+        url: './assets/easter_egg_turbo/scene.gltf',
         rotation: '0 0 0',
         scale: '50 50 50',
         position: '0 0 0',
